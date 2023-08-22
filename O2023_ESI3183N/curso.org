@@ -1,0 +1,94 @@
+* <2023-08-14 lun>
+
+semana 1 / Inicio de Curso / Presentacion
+
+Presentacion del profesor
+  - credenciales
+  - a pesar de que soy el profesor, tambien aprendo de ustedes
+  - ustedes quiza saben mas que yo en algunas areas, la idea es que todos aprendamos de todos
+  - ademas de los objetivos del curso, como objetivo ideal seria que todos pudieramos contribuir de alguna forma a un projecto del ecosistema opensource
+  - idioma? espan~ol o ingles? en la 'vida real' se usa el ingles, yo quisiera que fuera en ingles lo mas posible
+
+Llenado de Cuestionario
+  - revision del mismo entre todos
+
+Notas generales del curso
+
+  - la pagina de canvas NO esta actualizada, importe el curso del maestro Jose Luis Elvira
+    pero sobre este estoy an~adiendo nuevo material y ajustando fechas. No sera el mismo curso que imparte
+    Jose Luis, lo extiendo en algunas areas y son diferentes actividades/tareas.
+  - Los videos del maestro Elvira son altamente recomendados sobre todo para aquellos que les guste mas
+    aprender con multimedia que con slides.
+  - Dos sets de slides, unos en espan~ol (cortos) y otros en ingles (largos). El primero es subconjunto del segundo.
+  - OJO soy muchos slides! es mucho material y hay material nada facil!
+  - De ser posible, estudien los dos sets!
+  - Aula invertida, ustedes estudian los slides y en la clase realizamos actividades
+  - vamos a codificar bastante, usaremos en C, Bash y Python
+  - vamos a usar mucho herramientas desde la linea de codigo
+  - usaremos git para llevar bien cambios y avances
+
+
+Guia de Aprendizaje
+
+  - lectura de la misma
+
+Configuración, descarga e instalación de herramientas para el curso
+
+
+* <2023-08-16 mié>
+
+semana 2 / Estructuras de los sistemas de computo y del sistema operativo
+
+primera parte
+- repaso breve de los slides
+- dudas sobre los slides
+- creacion de equipos
+- lectura de la actividad y comienzo de ella
+
+segunda parte
+- https://www.virtualbox.org/manual/UserManual.html#virt-why-useful
+- slide 48 de OSC - Introduction
+- instalacion de la maquina virtual
+
+
+* <2023-08-21 lun>
+
+semana 3 / Procesos Sesion 1
+
+Primera Hora
+1. Respuestas de Actividad 1
+   grupo 1 responde la pregunta 1, grupo 2 responde la pregunta 2, etc.
+
+2. uso de pandoc con markdown
+   https://www.markdownguide.org/cheat-sheet/
+   compartir pantalla y ver actividad1.md, usar pandoc para generar pdf
+
+3. Revisar el tema de linkers & loaders
+
+   Linkers and Loaders
+   - Slide 32 de chap2.pptx
+   - elaborar un 'hello world' en C
+   - compilarlo con las instrucciones del slide 2.33 de chap2.pptx
+
+4. revisar el tema de system calls
+
+   Slide 7 y 17 del chap2.pptx
+   Slide 23 del 01 Resumen capitulos 1 y 2
+   ejecutarlo 
+   ejecutarlo bajo strace
+
+Segunda Hora
+
+5. Revision de Slides 02 Procesos
+   - detenerse en Concepto de Proceso
+   - ver procesos que estan corriendo en maquinas huesped (Resource Monitor en windows)
+   - ver los procesos que estan corriendo en la maquina virtual
+   - terminar planificadores con 1 y 2 cpus
+   - en la maquina virtual, monitorial los procesos con el comando perf
+   - instalar el siguiente paquete
+     sudo apt install linux-tools-common
+     perf timechart record
+
+
+
+

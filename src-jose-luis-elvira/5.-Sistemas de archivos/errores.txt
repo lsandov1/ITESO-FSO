@@ -1,0 +1,2 @@
+Este es un mensaje de error
+Los errores hay que mandarlos a este archivo
