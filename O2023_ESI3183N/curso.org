@@ -37,7 +37,7 @@ Configuración, descarga e instalación de herramientas para el curso
 
 * <2023-08-16 mié>
 
-semana 2 / Estructuras de los sistemas de computo y del sistema operativo
+semana 1 / Estructuras de los sistemas de computo y del sistema operativo
 
 primera parte
 - repaso breve de los slides
@@ -53,7 +53,7 @@ segunda parte
 
 * <2023-08-21 lun>
 
-semana 3 / Procesos Sesion 1
+semana 2 / Procesos Sesion 1
 
 Primera Hora
 1. Respuestas de Actividad 1
@@ -91,4 +91,50 @@ Segunda Hora
 
 
 
+
+* <2023-08-23 mié>
+
+semana 2 / Procesos Sesion 2
+
+1. Revision actividad de sesion previa (tarea)
+
+2. Revision de los slides de la sesion del dia
+
+3. Revision de examen previo a sesion del dia
+
+4. revision de repositorio en gitlab
+
+5. pedirles que clonen el repo dentro de sus maquinas virtuales
+
+6. pedirles que compilen el ejemplo 1.-Procesos/ejemplo1.c
+
+
+* <2023-08-28 lun>
+
+
+semana 3 / Procesos - Cooperation & Communication
+
+1. Revision de Actividad 1.2 - Intro & Services
+   - todos aquellos que hayan recibido comentarios, se discutiran en clase
+   - Mauricio Martin del Campo, agregarlo a un equipo
+   - Explain how the Linux kernel variables HZ and jiffies can be used to
+     determine the number of seconds the system has been running since it
+     was booted.
+     - man 7 time - time and timers
+       - HZ = 60 /* 100 cycles / second */
+       - jiffy_duration = 1 / HZ /* duration of each cycle, in seconds)
+       - booted elapsed time = current_number_of_jiffies * jiffy_duration
+
+2. Revision de actividad 2.2
+   - hacer un fork del repositorio del curso
+   - crear un branch con el nombre actividad-2.2
+   - colocar el codigo fuente en el folder respectivo ITESO-FSO/activities/2.2-Process-Creation/
+   - indicar a git llevar el control de el codigo fuente/archivos con git-add
+   - generar un commit
+   - generar un Makefile, como ejemplo ver https://www.gnu.org/software/make/manual/html_node/Simple-Makefile.html
+   - revisar el comando make
+
+3. Revision los slides cortos de la actividad 3.1 - Process - Cooperation & Communication
+   Revision los slides extendidos de la actividad 3.1 - Process - Cooperation & Communication
+   
 
