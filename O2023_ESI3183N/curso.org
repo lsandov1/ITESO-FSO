@@ -121,7 +121,7 @@ semana 3 / Procesos - Cooperation & Communication
      determine the number of seconds the system has been running since it
      was booted.
      - man 7 time - time and timers
-       - HZ = 60 /* 100 cycles / second */
+       - HZ = 100 /* 100 cycles / second */
        - jiffy_duration = 1 / HZ /* duration of each cycle, in seconds)
        - booted elapsed time = current_number_of_jiffies * jiffy_duration
 
