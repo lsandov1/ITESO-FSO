@@ -138,3 +138,14 @@ semana 3 / Procesos - Cooperation & Communication
    Revision los slides extendidos de la actividad 3.1 - Process - Cooperation & Communication
    
 
+* <2023-08-30 mié>
+
+1. Revision actividad 2.2 por equipo
+   - revisar que todos los ejercicios compilen y sus resultados
+
+2. GNU Make: https://www.gnu.org/software/make/manual/html_node/index.html#SEC_Contents`
+
+3. Lectura de los slides 3.1
+   - resolver dudas
+
+4. Lectura de los slides 3.2 - Hilos
