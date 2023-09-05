@@ -149,3 +149,56 @@ semana 3 / Procesos - Cooperation & Communication
    - resolver dudas
 
 4. Lectura de los slides 3.2 - Hilos
+
+
+
+* <2023-09-04 lun>
+
+
+Primera Hora
+
+1. Revision de Actividad 2.1
+   - Solo dos equipos tuvieron las respuetas correctas
+   - Mostrar las respuestas correctas
+
+2. Revision de Actividad 3.1
+   - Dos equipos que nos expliquen las respuestas
+   - Pedir que todos suban su trabajo a gitlab y revisar equipo por equipo las dudas
+   - A partir de ahora solo usaremos la rama principal, no ramas por actividad
+
+
+Segunda Hora
+
+1. Revision Slides de Actividad 4.1
+   - Hilos - Arquitecturas Multicore
+     - En slide 30, desde la maquina virtual, entender del comando lscpu
+     - Revisar slides del ch1 del 52-54
+
+   - Hilos - Hilos  POSIX (Pthreads en ingles)
+     - Es una especificacion, no una implementacion
+     - continuar con los slides 
+     - Ver los ejemplos*.c en repositorio ITESO-FSO/src-jose-luis-elvira/2.-Hilos
+   
+2. Revision de Actividad 4.1
+  - Explicar el problema  
+  - Antes de optimizar algunas de las preguntas que tenemos que hacernos son:
+    - es necesario?
+    - cual es el cuello de botella?
+    - se puede realizar procesamiento de los datos por separado?
+    - si los datos son independientes entre si, no es necesario preocuparnos por sobreescribir memoria
+    - si los datos son dependenites, es necesario identificar aquella parte del codigo y utilizar exclusion-mutua (ver los videos del Mtro. Elvita)
+    - Para este caso podemos crear 1-proceso y n-hilos
+    - cuantos hilos? si colocamos muchos hilos, generaremos muchos cambios de contexto y eso es contra producente
+
+  - Compilar con Makefile
+  - Revisar su desempeno con el comando perf
+    $ sudo perf record ./matrprimos
+    $ sudo perf report -f
+
+* <2023-09-06 mié>
+
+1. Revision de Actividad 3.2
+   - Equipo 1 contesta la pregunta 1
+   - Equipo 2 contesta la pregunta 2
+   - ..
+
