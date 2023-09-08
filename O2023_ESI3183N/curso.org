@@ -197,8 +197,19 @@ Segunda Hora
 
 * <2023-09-06 mié>
 
+Pospuesta por cuestiones personales
+
+* <2023-09-07 jue>
+
 1. Revision de Actividad 3.2
    - Equipo 1 contesta la pregunta 1
    - Equipo 2 contesta la pregunta 2
    - ..
+
+2. Revision general y de avances
+   - Problemas con VM
+   - gitlab
+   - Actividad 4.1
+
+3. Lectura de slides 4.2
 
