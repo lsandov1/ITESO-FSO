@@ -15,6 +15,7 @@ int mat[SIZE][SIZE];
 void initmat(int mat[][SIZE]);
 void printnonzeroes(int mat[SIZE][SIZE]);
 int isprime(int n);
+void printmat(int mat[][SIZE]);
 
 int main()
 {
@@ -27,6 +28,9 @@ int main()
 
 	// Inicializa la matriz con números al azar
 	initmat(mat);
+
+	// Imprimit  la matriz
+	//printmat(mat);
 	
 	gettimeofday(&ts, NULL);
 	start_ts = ts.tv_sec; // Tiempo inicial
@@ -36,8 +40,10 @@ int main()
 	
 	for(i=0;i<SIZE;i++)
 		for(j=0;j<SIZE;j++)
-			if(!isprime(mat[i][j]))
-			   mat[i][j]=0;
+		  if(!isprime(mat[i][j])) {
+		    //printf("(%d,%d)=%d is not prime\n", i, j, mat[i][j]);
+		    mat[i][j]=0;
+		  }
 	
 	// Hasta aquí termina lo que se tiene que hacer en paralelo
 	gettimeofday(&ts, NULL);
@@ -52,13 +58,24 @@ int main()
 
 void initmat(int mat[][SIZE])
 {
-	int i,j;
+  int i,j;
+  int count=0;
 	
-	srand(getpid());
+  srand(getpid());
+  
+  for(i=0;i<SIZE;i++)
+    for(j=0;j<SIZE;j++)
+      mat[i][j]=count++;
+      //mat[i][j]=INICIAL+rand()%(FINAL-INICIAL);
+}
+
+void printmat(int mat[][SIZE])
+{
+  int i,j;
 	
-	for(i=0;i<SIZE;i++)
-		for(j=0;j<SIZE;j++)
-			mat[i][j]=INICIAL+rand()%(FINAL-INICIAL);
+  for(i=0;i<SIZE;i++)
+    for(j=0;j<SIZE;j++)
+      printf("%d ", mat[i][j]);
 }
 
 void printnonzeroes(int mat[SIZE][SIZE])
