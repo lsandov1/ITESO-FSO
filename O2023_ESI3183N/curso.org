@@ -213,3 +213,28 @@ Pospuesta por cuestiones personales
 
 3. Lectura de slides 4.2
 
+* <2023-09-11 lun>
+
+1. Revision Actividad 4.1
+  - preg 1. Revisar matrprime 
+    - Revisar algoritmo por grupo
+    - Revisar performance usando 4 cores
+    - como podemos comparar los resultados con la version serial?
+      - Mofificar el programa tal que cada valor de la matrix sea el
+        valor de un contador
+      - comparar los resultados de cada version, guardandolos a un archivo y reviasando
+        ese archivo
+      - comparar los resultados con el commando diff
+  - preg 2. Revisar taylor
+      - Comparar algoritmos con los grupos que entregaron
+
+  - Revision del comando ps para mostrar hilo
+    $ ps m
+    $ ps m -o pid,tid,command
+
+  - en dos consolas
+    1$ watch ./matrprimos_p
+    2$ watch ps m -o ppid,pid,tid,command
+
+2. Revision Actividad 4.2
+  - Profesor Muestra pdf de actividad
