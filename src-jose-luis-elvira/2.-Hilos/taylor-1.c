@@ -31,7 +31,7 @@ int main()
 	stop_ts = ts.tv_sec; // Tiempo final
 
 	elapsed_time = stop_ts - start_ts;
-	printf("Resultado = %.4lf\n",sum);
+	printf("Resultado = %.16lf\n",sum);
 	printf("------------------------------\n");
 	printf("TIEMPO TOTAL, %lld segundos\n",elapsed_time);
 }
