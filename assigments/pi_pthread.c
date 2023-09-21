@@ -27,31 +27,39 @@
 
 #define ITERS 100000000
 #define NTHREADS 8
+#define MAX_ITERS 10 //10^0, 10^1, ... , 10^9
 
 static volatile double total_sum = 0;
 static pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
 
+struct iter {
+  int thread_number;
+  int iters;
+};
+
 void *tfunc(void *args)
 {
-    int i = *((int*) args);
+    struct iter iter = *((struct iter *) args);
+    int i = iter.thread_number;
+    int iters = iter.iters;
     double x = (double)i/NTHREADS;
     double sum = 0.0;
     double y;
-    double delta=1.0/ITERS;
+    double delta=1.0/iters;
     double hdelta=delta/2;
     int n;
 
-    for(n=0;n<ITERS/NTHREADS;n++)
+    for(n=0;n<iters/NTHREADS;n++)
       {
 	x += delta;
 	y = sqrt(1-pow(x-hdelta,2));
 	sum += delta*y;
       }
+
     pthread_mutex_lock(&mtx);
     total_sum +=sum;
     pthread_mutex_unlock(&mtx);
 
-    printf("thread %d sum = %.32lf total_sum = %.32lf\n", i, sum, total_sum);
 }
 
 int main()
@@ -61,27 +69,31 @@ int main()
 	long long elapsed_time;
 	struct timeval ts;
 	pthread_t tid[NTHREADS];
-	int targs[NTHREADS];
-	int i;
+	struct iter iters[NTHREADS];
+	int i,j;
 
-	gettimeofday(&ts, NULL);
-	start_ts = ts.tv_sec; // Tiempo inicial
+	for(j=0; j<MAX_ITERS; j++) {
+	  gettimeofday(&ts, NULL);
+	  start_ts = ts.tv_sec; // Tiempo inicial
 
-	for(i=0;i<NTHREADS;i++)
-	{
-	  targs[i] = i;
-	  pthread_create(&tid[i],NULL,tfunc,&targs[i]);
-	}
+	  total_sum = 0;
 
-	for(i=0;i<NTHREADS;i++)
-	  pthread_join(tid[i],NULL);
+	  for(i=0;i<NTHREADS;i++) {
+	      iters[i].thread_number = i;
+	      iters[i].iters = (int)pow(10,j);
+	      pthread_create(&tid[i],NULL,tfunc,&iters[i]);
+	  }
+
+	  for(i=0;i<NTHREADS;i++)
+	    pthread_join(tid[i],NULL);
     
-	total_sum *= 4;
+	  total_sum *= 4;
 
-	gettimeofday(&ts, NULL);
-	stop_ts = ts.tv_sec; // Tiempo final
+	  gettimeofday(&ts, NULL);
+	  stop_ts = ts.tv_sec; // Tiempo final
 
-	elapsed_time = stop_ts - start_ts;
-	printf("PI = %.16lf Duration %lld\n", total_sum, elapsed_time);
+	  elapsed_time = stop_ts - start_ts;
+	  printf("%d %.16lf %lld\n", (int)pow(10,j), total_sum, elapsed_time);
+	}
 
 }
