@@ -27,7 +27,7 @@
 
 #define ITERS 100000000
 #define NTHREADS 8
-#define MAX_ITERS 10 //10^0, 10^1, ... , 10^9
+#define MAX_ITERS 6 //10^1, 10^2, ... , 10^6
 
 static volatile double total_sum = 0;
 static pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
@@ -80,7 +80,7 @@ int main()
 
 	  for(i=0;i<NTHREADS;i++) {
 	      iters[i].thread_number = i;
-	      iters[i].iters = (int)pow(10,j);
+	      iters[i].iters = (int)pow(10,j+1);
 	      pthread_create(&tid[i],NULL,tfunc,&iters[i]);
 	  }
 
@@ -93,7 +93,7 @@ int main()
 	  stop_ts = ts.tv_sec; // Tiempo final
 
 	  elapsed_time = stop_ts - start_ts;
-	  printf("%d %.16lf %lld\n", (int)pow(10,j), total_sum, elapsed_time);
+	  printf("%d %.32lf %.32lf \n", (int)pow(10,j), total_sum, M_PI);
 	}
 
 }
