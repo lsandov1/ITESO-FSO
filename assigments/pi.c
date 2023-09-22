@@ -56,8 +56,5 @@ int main()
 	stop_ts = ts.tv_sec; // Tiempo final
 
 	elapsed_time = stop_ts - start_ts;
-	printf("delta = %.32lf\n",delta);
-	printf("Resultado = %.32lf\n",sum);
-	printf("------------------------------\n");
-	printf("TIEMPO TOTAL, %lld segundos\n",elapsed_time);
+	printf("%.32lf %.32lf \n", sum, M_PI);
 }

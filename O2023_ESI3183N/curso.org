@@ -270,5 +270,15 @@ Pospuesta por cuestiones personales
 
 <2023-09-20 mié>
 
-1. Encuesta de medio termino (1 min)
+1. Encuesta de medio termino (15 min)
+
+2. Dudas Practica 1 y 2
+
+3. Revision de performance, pthreads (leo)
+
+4. iteraciones versus precision
+
+5. Problemas de concurrencia
+
+
 

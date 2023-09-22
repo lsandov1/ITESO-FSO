@@ -25,9 +25,8 @@
 /* rectángulos. La suma del área de todos los rectángulos será PI/4. Mientras más */
 /* sean los rectángulos y más pequeños, el valor obtenido será más preciso. */
 
-#define ITERS 100000000
 #define NTHREADS 8
-#define MAX_ITERS 6 //10^1, 10^2, ... , 10^6
+#define ITERS 100000000
 
 static volatile double total_sum = 0;
 static pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
@@ -56,6 +55,7 @@ void *tfunc(void *args)
 	sum += delta*y;
       }
 
+    printf("i = %d x = %lf PID = %d sum = %.16lf\n", i, x, getpid(), sum);
     pthread_mutex_lock(&mtx);
     total_sum +=sum;
     pthread_mutex_unlock(&mtx);
@@ -72,28 +72,25 @@ int main()
 	struct iter iters[NTHREADS];
 	int i,j;
 
-	for(j=0; j<MAX_ITERS; j++) {
-	  gettimeofday(&ts, NULL);
-	  start_ts = ts.tv_sec; // Tiempo inicial
+	gettimeofday(&ts, NULL);
+	start_ts = ts.tv_sec; // Tiempo inicial
 
-	  total_sum = 0;
+	total_sum = 0;
 
-	  for(i=0;i<NTHREADS;i++) {
-	      iters[i].thread_number = i;
-	      iters[i].iters = (int)pow(10,j+1);
-	      pthread_create(&tid[i],NULL,tfunc,&iters[i]);
-	  }
-
-	  for(i=0;i<NTHREADS;i++)
-	    pthread_join(tid[i],NULL);
-    
-	  total_sum *= 4;
-
-	  gettimeofday(&ts, NULL);
-	  stop_ts = ts.tv_sec; // Tiempo final
-
-	  elapsed_time = stop_ts - start_ts;
-	  printf("%d %.32lf %.32lf \n", (int)pow(10,j), total_sum, M_PI);
+	for(i=0;i<NTHREADS;i++) {
+	  iters[i].thread_number = i;
+	  iters[i].iters = ITERS;
+	  pthread_create(&tid[i],NULL,tfunc,&iters[i]);
 	}
 
+	for(i=0;i<NTHREADS;i++)
+	  pthread_join(tid[i],NULL);
+    
+	total_sum *= 4;
+
+	gettimeofday(&ts, NULL);
+	stop_ts = ts.tv_sec; // Tiempo final
+
+	elapsed_time = stop_ts - start_ts;
+	printf("%.32lf %.32lf \n", total_sum, M_PI);
 }

@@ -24,7 +24,8 @@ int main()
 		for(i=0;i<5;i++)
 		{
 			(*g)++;
-			sleep(2);
+			printf("En el hijo g=%d\n",*g);
+			sleep(1);
 		}
 	}
 	else

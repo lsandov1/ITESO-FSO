@@ -2,16 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/shm.h>
+#include <math.h>
 
+#define NPROCS 8
 #define ITERS 100000000
-#define NPROCS 4
 
-struct x_region {
-  int i;
-  double sum;
-};
-struct x_region x_regions[NPROCS];
-struct x_region *m,*g;
+double *g;
 
 void tfunc(int i)
 {
@@ -29,41 +25,36 @@ void tfunc(int i)
 	sum += delta*y;
       }
 
-    g->i=i;
-    g->sum=sum;
+    g[i]=sum;
 
-    printf("i = %d PID = %d sum = %.16lf\n", i, getpid(), sum);
+    printf("i = %d x = %lf PID = %d sum = %.16lf\n", i, x, getpid(), sum);
 }
 
 int main()
 {
-  int pid,ppid;
+  int pid;
   int i;
   double total_sum = 0;	
 
-  int shmid = shmget(0x1234,sizeof(x_regions),0666|IPC_CREAT);
-  m = shmat(shmid,NULL,0);
-  g = m;
-
-  ppid=getpid();
+  int shmid = shmget(0x1234,sizeof(double)*NPROCS, 0666|IPC_CREAT);
+  g = (double *)shmat(shmid,NULL,0);
 
   // compute partial results
-  for(i=0;i<NPROCS;i++, g++) {
+  for(i=0;i<NPROCS;i++) {
     pid=fork();
-    if(pid==0)
+    if(pid==0) {
       tfunc(i);
-    else {
-      wait(NULL);
-      shmdt(shmid);
+      exit(0);
     }
   }
 
-  if(getpid() == ppid) {
-    // sum partial results
-    for(i=0,g=m;i<NPROCS;i++, g++)
-      total_sum += g->sum;
-
-    total_sum *= 4;
-    printf("PID = %d PI = %.16lf\n", getpid(), total_sum);
+  // sum partial results
+  for(i=0;i<NPROCS;i++) {
+    wait(NULL);
+    //printf("g[i]= %lf total_sum = %lf\n", g[i], total_sum);
+    total_sum += g[i];
   }
+
+  total_sum *= 4;
+  printf("%.32lf %.32lf \n", total_sum, M_PI);
 }
