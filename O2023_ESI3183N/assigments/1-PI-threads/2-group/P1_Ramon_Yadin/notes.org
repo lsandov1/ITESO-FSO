@@ -1,0 +1,8 @@
+* general
+
+name of the zip just reflects the work of one person
+
+* makefile
+  - command make does not work
+  - name of the makefile has wrong filename
+  - make -f MakefileP1.txt does not work

@@ -1,0 +1,10 @@
+all: CalcularPI regla_Trapecio
+
+CalcularPI: CalcularPI.c
+	gcc -o CalcularPI CalcularPI.c -lm
+
+regla_Trapecio: regla_Trapecio.c
+	gcc -o regla_Trapecio regla_Trapecio.c
+
+clean:
+	rm CalcularPI regla_Trapecio
