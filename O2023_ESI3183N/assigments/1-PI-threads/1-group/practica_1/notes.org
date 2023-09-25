@@ -1,0 +1,32 @@
+* makefile 
+ - esta roto
+gcc -o practica1 practica1.c -lpthread -lm
+gcc -o practica1_serial practica1_serial.c -lpthread -lm
+make: *** No rule to make target 'practica2.c', needed by 'practica2'.  Stop.
+
+  - tiene librerias de enlanza inecesareas
+
+* funcionamiento -20
+  makefile no funciona como se espera
+
+* claridad -1.5
+  comentarios extras y lineas en blanco
+
+* defensa
+  integrante 1
+    porque falla el makefile
+    detecta alguna libreria de enlace incesaria?
+
+  integrante 2
+    borrar mensajes de avance
+    porque imprimir msg demora la ejecucion?
+
+  integrante 1
+    agregar en el makefile una regla qeu borre solos los binarios (make clean)
+
+    comparar tiempos de serial versus paralela
+
+   
+
+en la sesion, modificar el archivo tal que reciba como parametro el numero de secciones y comparar valor de PI versus numero de secciones
+    
